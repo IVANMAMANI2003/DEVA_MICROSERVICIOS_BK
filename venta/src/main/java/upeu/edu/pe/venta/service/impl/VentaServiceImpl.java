@@ -40,7 +40,7 @@ public class VentaServiceImpl implements VentaService {
 
     @Override
     public Venta createVenta(Venta venta) {
-        Venta invoiceDB = ventaRepository.findByNumberVenta ( venta.getNumberInvoice () );
+        Venta invoiceDB = ventaRepository.findBySerie ( venta.getSerie () );
         if (invoiceDB !=null){
             return  invoiceDB;
         }
@@ -62,7 +62,7 @@ public class VentaServiceImpl implements VentaService {
         }
         invoiceDB.setUsuarioId(venta.getUsuarioId());
         invoiceDB.setDescription(venta.getDescription());
-        invoiceDB.setNumberInvoice(venta.getNumberInvoice());
+        invoiceDB.setSerie(venta.getSerie());
         invoiceDB.getDetalles().clear();
         invoiceDB.setDetalles(venta.getDetalles());
         return ventaRepository.save(invoiceDB);

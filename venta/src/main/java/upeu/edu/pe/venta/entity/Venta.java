@@ -32,8 +32,8 @@ public class Venta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "number_invoice")
-    private String numberInvoice;
+    @Column(name = "serie")
+    private String serie;
 
     private String description;
 

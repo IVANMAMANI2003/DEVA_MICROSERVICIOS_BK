@@ -8,5 +8,5 @@ import upeu.edu.pe.venta.entity.Venta;
 
 public interface VentaRepository extends JpaRepository<Venta, Long> {
     public List<Venta> findByUsuarioId(Long usuarioId );
-    public Venta findByNumberVenta(String numberVenta);
+    public Venta findBySerie(String serie);
 }
