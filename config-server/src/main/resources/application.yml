@@ -8,8 +8,8 @@ spring:
         git:
           uri: https://github.com/IVANMAMANI2003/DEVA_MICROSERVICIOS_BK.git
           searchPaths: config-data
-          username: Ivan
-          password: mamani123456
+          username: IVANMAMANI2003
+          password: mamanigit123
           default-label: main
   security:
     user:
