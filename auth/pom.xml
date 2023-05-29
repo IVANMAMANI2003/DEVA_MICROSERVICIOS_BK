@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.0</version>
+		<version>2.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>upeu.edu.pe</groupId>
@@ -44,10 +44,9 @@
             <version>0.9.1</version>
         </dependency>
         <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-			<version>3.1.0</version>
-		</dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <!--<dependency>
             <groupId>com.h2database</groupId>
