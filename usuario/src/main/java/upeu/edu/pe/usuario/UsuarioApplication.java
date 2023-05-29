@@ -10,7 +10,7 @@ import io.swagger.v3.oas.models.info.License;
 
 @SpringBootApplication
 public class UsuarioApplication {
-
+    
 	public static void main(String[] args) {
 		SpringApplication.run(UsuarioApplication.class, args);
 	}
