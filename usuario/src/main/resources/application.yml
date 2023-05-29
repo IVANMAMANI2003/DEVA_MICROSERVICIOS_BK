@@ -1,7 +1,7 @@
 spring:
-    application:
-        name: usuario-service
-    profiles:
-        active: development
-    config:
-        import: optional:configserver:http://root:s3cr3t@localhost:8585
+  application:
+    name: usuario-service
+  profiles:
+    active: development
+  config:
+    import: optional:configserver:http://root:s3cr3t@localhost:8585
