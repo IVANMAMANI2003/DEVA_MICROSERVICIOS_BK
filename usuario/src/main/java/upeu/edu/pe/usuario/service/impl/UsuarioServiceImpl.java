@@ -30,7 +30,7 @@ public class UsuarioServiceImpl implements UsuarioService{
             return  usuarioDB;
         }
 
-        usuario.setState("CREATED");
+        usuario.setRol("CREATED");
         usuarioDB = usuarioRepository.save ( usuario );
         return usuarioDB;
     }
@@ -55,7 +55,7 @@ public class UsuarioServiceImpl implements UsuarioService{
         if (usuarioDB ==null){
             return  null;
         }
-        usuario.setState("DELETED");
+        usuario.setRol("DELETED");
         return usuarioRepository.save(usuario);
     }
 
