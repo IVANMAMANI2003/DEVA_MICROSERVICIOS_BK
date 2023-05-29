@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lombok.extern.slf4j.Slf4j;
+//import lombok.extern.slf4j.Slf4j;
 import upeu.edu.pe.venta.dto.Producto;
 import upeu.edu.pe.venta.dto.Usuario;
 import upeu.edu.pe.venta.entity.Venta;
@@ -17,7 +17,7 @@ import upeu.edu.pe.venta.repository.VentaDetalleRepository;
 import upeu.edu.pe.venta.repository.VentaRepository;
 import upeu.edu.pe.venta.service.VentaService;
 
-@Slf4j
+//@Slf4j
 @Service
 public class VentaServiceImpl implements VentaService {
 
