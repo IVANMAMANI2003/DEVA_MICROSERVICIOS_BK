@@ -1,16 +1,12 @@
 spring:
   application:
     name: catalogo-service
-  profiles:
-    active: development
-  config:
-    import: optional:configserver:http://root:s3cr3t@localhost:8585
-  jpa:
-    properties:
-      hibernate:
-        jdbc:
-          time_zone: America/Lima
-  servlet:
-    multipart:
-      max-file-size: 5MB
-      max-request-size: 5MB
+  cloud:
+    config:
+      uri: http://localhost:8585
+      username: root
+      password: s3cr3t
+  boot:
+    admin:
+      client:
+        url: http://localhost:8086
