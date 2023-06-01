@@ -1,11 +1,9 @@
 server:
   port: 8383
-springdoc:
-  api-doc:
-    enabled: true
-  swagger-ui:
-    enabled: true
-    path: /doc/swagger-ui.html
+  error:
+    include-message: always
+    include-binding-errors: always
+
 spring:
   jpa:
     hibernate.ddl-auto: update
@@ -16,10 +14,25 @@ spring:
     url: jdbc:mysql://localhost:3306/amicventadev
     username: root
     password:
+
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8686/eureka}
-Feign:
-  hystrix:
+
+springdoc:
+  api-doc:
     enabled: true
+  swagger-ui:
+    enabled: true
+    path: /doc/swagger-ui.html
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
