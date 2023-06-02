@@ -12,9 +12,9 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 import upeu.edu.pe.gatewayserver.dto.TokenDto;
 
-
 @Component
 public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> {
+
     private WebClient.Builder webClient;
 
     public AuthFilter(WebClient.Builder webClient) {
@@ -44,9 +44,8 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
     public Mono<Void> onError(ServerWebExchange exchange, HttpStatus status){
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(status);
-        return ((org.springframework.http.server.reactive.ServerHttpResponse) response).setComplete();
+        return response.setComplete();
     }
 
     public static class Config {}
-
 }
