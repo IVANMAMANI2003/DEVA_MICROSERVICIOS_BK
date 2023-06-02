@@ -1,8 +1,7 @@
 spring:
-  application:
-    name: registry-service
-  cloud:
+    application:
+        name: registry-service
+    profiles:
+        active: development
     config:
-      uri: http://localhost:8585
-      username: root
-      password: s3cr3t
+        import: optional:configserver:http://root:s3cr3t@localhost:8585
