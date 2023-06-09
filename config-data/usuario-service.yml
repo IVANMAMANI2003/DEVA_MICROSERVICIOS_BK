@@ -1,9 +1,11 @@
 server:
   port: 8181
-  error:
-    include-message: always
-    include-binding-errors: always
-
+springdoc:
+  api-doc:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /doc/swagger-ui.html
 spring:
   jpa:
     hibernate.ddl-auto: update
@@ -11,29 +13,10 @@ spring:
     generate-ddl: true
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/amicususariodev
+    url: jdbc:mysql://localhost:3306/amicusuariodev
     username: root
     password:
-
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8686/eureka}
-
-springdoc:
-  api-doc:
-    enabled: true
-  swagger-ui:
-    enabled: true
-    path: /doc/swagger-ui.html
-
-logging:
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
