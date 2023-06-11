@@ -30,7 +30,7 @@ import upeu.edu.pe.catalogo.entity.Producto;
 import upeu.edu.pe.catalogo.service.ProductoService;
 
 @RestController
-@RequestMapping (value = "/productos")
+@RequestMapping (value = "/producto")
 public class ProductoController {
 
     @Autowired
