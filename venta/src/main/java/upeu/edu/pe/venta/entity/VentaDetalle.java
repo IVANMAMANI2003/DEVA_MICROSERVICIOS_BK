@@ -13,7 +13,7 @@ import upeu.edu.pe.venta.dto.Producto;
 
 @Entity
 @Data
-@Table(name = "tbl_invoce_items")
+@Table(name = "tbl_venta_detalle")
 public class VentaDetalle  {
 
     @Id
@@ -23,7 +23,7 @@ public class VentaDetalle  {
     private Double quantity;
     private Double  price;
 
-    @Column(name = "product_id")
+    @Column(name = "producto_id")
     private Long productId;
 
 

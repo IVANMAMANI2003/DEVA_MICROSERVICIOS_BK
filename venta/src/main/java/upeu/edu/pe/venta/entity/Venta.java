@@ -49,7 +49,7 @@ public class Venta {
     @Valid
     @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "invoice_id")
+    @JoinColumn(name = "venta_id")
     private List<VentaDetalle> detalles;
 
     private String state;

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import upeu.edu.pe.venta.dto.Producto;
 
-@FeignClient(name = "producto-service", path = "/products")
+@FeignClient(name = "catalogo-service", path = "/producto")
 public interface ProductoFeing {
 
     @GetMapping(value = "/{id}")
