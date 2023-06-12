@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import upeu.edu.pe.venta.dto.Usuario;
 
-@FeignClient(name = "usuario",fallback = UsuarioHystrixFallbackFactory.class)
+@FeignClient(name = "usuario-service",path = "/usuario",fallback = UsuarioHystrixFallbackFactory.class)
 public interface UsuarioFeing {
 
     @GetMapping(value = "/usuario/{id}")
