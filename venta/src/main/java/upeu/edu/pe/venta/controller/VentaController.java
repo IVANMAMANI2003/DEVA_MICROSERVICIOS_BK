@@ -29,7 +29,7 @@ import upeu.edu.pe.venta.service.VentaService;
 
 @Slf4j
 @RestController
-@RequestMapping("/ventas")
+@RequestMapping("/venta")
 public class VentaController {
 
     @Autowired
