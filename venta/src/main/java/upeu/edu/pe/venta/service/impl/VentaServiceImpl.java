@@ -11,8 +11,8 @@ import upeu.edu.pe.venta.dto.Producto;
 import upeu.edu.pe.venta.dto.Usuario;
 import upeu.edu.pe.venta.entity.Venta;
 import upeu.edu.pe.venta.entity.VentaDetalle;
-import upeu.edu.pe.venta.feing.ProductoFeing;
-import upeu.edu.pe.venta.feing.UsuarioFeing;
+import upeu.edu.pe.venta.feign.ProductoFeing;
+import upeu.edu.pe.venta.feign.UsuarioFeing;
 import upeu.edu.pe.venta.repository.VentaDetalleRepository;
 import upeu.edu.pe.venta.repository.VentaRepository;
 import upeu.edu.pe.venta.service.VentaService;
@@ -40,58 +40,58 @@ public class VentaServiceImpl implements VentaService {
 
     @Override
     public Venta createVenta(Venta venta) {
-        Venta invoiceDB = ventaRepository.findBySerie ( venta.getSerie () );
-        if (invoiceDB !=null){
-            return  invoiceDB;
+        Venta ventaDB = ventaRepository.findBySerie ( venta.getSerie () );
+        if (ventaDB !=null){
+            return  ventaDB;
         }
         venta.setState("CREATED");
-        invoiceDB = ventaRepository.save(venta);
-        invoiceDB.getDetalles().forEach( invoiceItem -> {
-            productoFeing.updateStockProducto( invoiceItem.getProductId(), invoiceItem.getQuantity() * -1);
+        ventaDB = ventaRepository.save(venta);
+        ventaDB.getDetalles().forEach( ventaDetalle -> {
+            productoFeing.updateStockProducto( ventaDetalle.getProductId(), ventaDetalle.getQuantity() * -1);
         });
 
-        return invoiceDB;
+        return ventaDB;
     }
 
 
     @Override
     public Venta updateVenta(Venta venta) {
-        Venta invoiceDB = getVenta(venta.getId());
-        if (invoiceDB == null){
+        Venta ventaDB = getVenta(venta.getId());
+        if (ventaDB == null){
             return  null;
         }
-        invoiceDB.setUsuarioId(venta.getUsuarioId());
-        invoiceDB.setDescription(venta.getDescription());
-        invoiceDB.setSerie(venta.getSerie());
-        invoiceDB.getDetalles().clear();
-        invoiceDB.setDetalles(venta.getDetalles());
-        return ventaRepository.save(invoiceDB);
+        ventaDB.setUsuarioId(venta.getUsuarioId());
+        ventaDB.setDescription(venta.getDescription());
+        ventaDB.setSerie(venta.getSerie());
+        ventaDB.getDetalles().clear();
+        ventaDB.setDetalles(venta.getDetalles());
+        return ventaRepository.save(ventaDB);
     }
 
 
     @Override
     public Venta deleteVenta(Venta venta) {
-        Venta invoiceDB = getVenta(venta.getId());
-        if (invoiceDB == null){
+        Venta ventaDB = getVenta(venta.getId());
+        if (ventaDB == null){
             return  null;
         }
-        invoiceDB.setState("DELETED");
-        return ventaRepository.save(invoiceDB);
+        ventaDB.setState("DELETED");
+        return ventaRepository.save(ventaDB);
     }
 
     @Override
     public Venta getVenta(Long id) {
 
-        Venta venta= ventaRepository.findById(id).orElse(null);
+        Venta venta= ventaRepository.findById(id).get();
         if (null != venta ){
             Usuario usuario = usuarioFeing.getUsuario(venta.getUsuarioId()).getBody();
             venta.setUsuario(usuario);
-            List<VentaDetalle> listItem=venta.getDetalles().stream().map(invoiceItem -> {
-                Producto producto = productoFeing.getProducto(invoiceItem.getProductId()).getBody();
-                invoiceItem.setProduct(producto);
-                return invoiceItem;
+            List<VentaDetalle> listDetalle=venta.getDetalles().stream().map(ventaDetalle -> {
+                Producto producto = productoFeing.getProducto(ventaDetalle.getProductId()).getBody();
+                ventaDetalle.setProduct(producto);
+                return ventaDetalle;
             }).collect(Collectors.toList());
-            venta.setDetalles(listItem);
+            venta.setDetalles(listDetalle);
         }
         return venta ;
     }
